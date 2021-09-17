@@ -34,9 +34,6 @@ const requestHandler = (req, res) => {
       });
     }); //will be fired once it's done  parsing the incoming reqest data
 
-    res.statusCode = 302;
-    res.setHeader = ("Location", "/");
-    return res.end();
   }
   res.setHeader("Content-Type", "text/html");
   res.write("<html>");
