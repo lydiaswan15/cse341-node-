@@ -1,7 +1,5 @@
 const requestHandler = (req, res) => {
 
-    console.log('it is redirecting to this page');
-
     const url = req.url;
     const method = req.method;
 
@@ -37,6 +35,7 @@ const requestHandler = (req, res) => {
     // Using a buffer to convert array to a string
     // logging newly
     if (url === '/create-user' & method === 'POST') {
+        console.log('working');
         const usernames = [];
         req.on('data', (chunk) => {
             usernames.push(chunk);
