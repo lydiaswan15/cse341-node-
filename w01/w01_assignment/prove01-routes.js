@@ -16,6 +16,7 @@ const requestHandler = (req, res) => {
 
     // List of dummy users on url /users
     if (url === '/users') {
+
         res.write('<html>');
         res.write('<head><title>W01 Assignment</title></head>');
         res.write('<h1>Dummy Users</h1>');
@@ -46,8 +47,8 @@ const requestHandler = (req, res) => {
             console.log(message);
         })
         res.statusCode = 302;
-        res.setHeader('Location', '/');
-        res.end();
+        res.setHeader('Location', '/users');
+        return res.end();
     }
 };
 
