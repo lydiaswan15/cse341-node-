@@ -9,7 +9,7 @@ const requestHandler = (req, res) => {
         res.write('<html>');
         res.write('<head><title>W01 Assignment</title></head>');
         res.write('<h1>Welcome</h1>');
-        res.write('<form action = "/create-user" method = "POST"><input type = "text" name = "create-user"><button type = "submit">Submit</button></form>');
+        res.write('<form action = "/create-user" method = "POST"><input type = "text" name = "username"><button type = "submit">Submit</button></form>');
         res.write('</html>');
         return res.end();
     }
@@ -27,6 +27,7 @@ const requestHandler = (req, res) => {
         res.write('<li>User 5</li>');
         res.write('</ul>');
         res.write('</html>');
+        return res.end();
 
     }
 
@@ -35,7 +36,6 @@ const requestHandler = (req, res) => {
     // Using a buffer to convert array to a string
     // logging newly
     if (url === '/create-user' & method === 'POST') {
-        console.log('working');
         const usernames = [];
         req.on('data', (chunk) => {
             usernames.push(chunk);
