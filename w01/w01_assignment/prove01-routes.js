@@ -2,6 +2,7 @@ const requestHandler = (req, res) => {
 
     const url = req.url;
     const method = req.method;
+    const fs = require('fs');
 
     // Openning page
     // Input entered into the form will submit a POST request to /create-user upon button click
@@ -17,18 +18,25 @@ const requestHandler = (req, res) => {
     // List of dummy users on url /users
     if (url === '/users') {
 
-        res.write('<html>');
-        res.write('<head><title>W01 Assignment</title></head>');
-        res.write('<h1>Dummy Users</h1>');
-        res.write('<ul>');
-        res.write('<li>User 1</li>');
-        res.write('<li>User 2</li>');
-        res.write('<li>User 3</li>');
-        res.write('<li>User 4</li>');
-        res.write('<li>User 5</li>');
-        res.write('</ul>');
-        res.write('</html>');
-        return res.end();
+        // let data = fs.readFileSync('usernames.txt', (err, content)=>{
+        
+        // });
+        // const parsedUsernames = Buffer.concat(data).toString();
+        //     data = parsedUsernames.split('=')[1];
+        
+        
+            res.write('<html>');
+            res.write('<head><title>W01 Assignment</title></head>');
+            res.write('<h1>Dummy Users</h1>');
+            res.write('<ul>');
+            res.write('<li>User 1</li>');
+            res.write('<li>User 2</li>');
+            res.write('<li>User 3</li>');
+            res.write('<li>User 4</li>');
+            res.write('<li>User 5</li>');
+            res.write('</ul>');
+            res.write('</html>');
+            return res.end();
 
     }
 
@@ -45,6 +53,7 @@ const requestHandler = (req, res) => {
             const parsedUsernames = Buffer.concat(usernames).toString(); //going through the list and parsing it.
             const message = parsedUsernames.split('=')[1];
             console.log(message);
+            fs.writeFile('usernames.txt', message, ()=>{});
         })
         res.statusCode = 302;
         res.setHeader('Location', '/users');
